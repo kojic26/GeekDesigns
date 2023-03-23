@@ -22,7 +22,7 @@
             var mixer = mixitup(containerEl);
         }
     });
-
+    
     /*------------------
         Background Set
     --------------------*/

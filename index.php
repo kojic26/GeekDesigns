@@ -1,63 +1,7 @@
-<!DOCTYPE html>
-<html lang="zxx">
-
-<head>
-    <?php
-    include './includes/header.html';
-    require './includes/database.php';
-    ?>
-
-    <title>Geek Designs</title>   
-</head>
-
-<body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-
-    <!-- Header Section Begin -->
-    <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-7">
-                        <div class="header__top__left">
-                            <p>Free shipping, 30-day return or refund guarantee.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-5">
-                        <div class="header__top__right">
-                            <div class="header__top__links">
-                                <a href="login.php">Sign in</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-3">
-                    <div class="header__logo">
-                        <a href="./index.php"><img src="img/logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <nav class="header__menu mobile-menu">
-                        <ul>
-                            <li class="active"><a href="./index.php">Home</a></li>
-                            <li><a href="./shop.php">Shop</a></li>
-                            <li><a href="./about.php">About</a></li>
-                            <li><a href="./contact.php">Contacts</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <div class="canvas__open"><i class="fa fa-bars"></i></div>
-        </div>
-    </header>
-    <!-- Header Section End -->
+<?php
+    include './includes/header.php';
+    require './database/database.php';
+?>
 
     <!-- Hero Section Begin -->
     <section class="hero">
@@ -147,100 +91,27 @@
                 </div>
             </div>
             <div class="row product__filter">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix <?php echo $row['category_name']; ?>">
+
+                    <?php
+                        $sql= "SELECT * FROM products";
+                        $result= mysqli_query($connect , $sql);
+                        while($row = $result->fetch_assoc()){
+                    ?>
+
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/anime-1.jpg">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/<?php echo $row['image']; ?>">
                             <span class="label">New</span>
                         </div>
                         <div class="product__item__text">
-                            <h6>Eren Yeager Shirt</h6>
-                            <a href="product-detail.php" class="buy-now">Buy Now</a>
-                            <h5>₱250.00</h5>
-                        </div>
+                            <h6><?php echo $row['name']; ?></h6>
+                            <a href="product-detail.php?id=<?php echo $row['product_id']; ?>" class="buy-now">Buy Now</a>
+                            <h5><?php echo $row['price']; ?></h5>                           
+                        </div>                          
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/anime-2.jpg">
-                            <span class="label">Hot</span>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>Gojo Satoru Shirt</h6>
-                            <a href="checkout.php" class="buy-now">Buy Now</a>
-                            <h5>₱250.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                    <div class="product__item sale">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/anime-3.jpg">
-                        </div>
-                        <div class="product__item__text">
-                            <h6>Naruto Sage Mode Shirt</h6>
-                            <a href="checkout.php" class="buy-now">Buy Now</a>  
-                            <h5>₱250.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/anime-4.jpg">
-                        </div>
-                        <div class="product__item__text">
-                            <h6>Luffy Hero Shirt</h6>
-                            <a href="checkout.php" class="buy-now">Buy Now</a>
-                            <h5>₱300.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/gaming-1.jpg">
-                        </div>
-                        <div class="product__item__text">
-                            <h6>Phoenix Valorant Shirt</h6>
-                            <a href="checkout.php" class="buy-now">Buy Now</a>
-                            <h5>₱350.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
-                    <div class="product__item sale">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/gaming-2.jpg">
-                            <span class="label">Sale</span>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>Sage Valorant Shirt</h6>
-                            <a href="checkout.php" class="buy-now">Buy Now</a>
-                            <h5>₱280.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/gaming-3.jpg">
-                        </div>
-                        <div class="product__item__text">
-                            <h6>Gusion ML Shirt</h6>
-                            <a href="checkout.php" class="buy-now">Buy Now</a>
-                            <h5>₱200.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/gaming-4.jpg">
-                            <ul class="product__hover">                               
-                                <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>Vale ML Shirt</h6>
-                            <a href="checkout.php" class="buy-now">Buy Now</a>
-                            <h5>₱200.00</h5>
-                        </div>
-                    </div>
+                    
+                    <?php } ?> 
+
                 </div>
             </div>
         </div>
@@ -297,7 +168,7 @@
     
     <!-- Footer -->
     <?php 
-    include './includes/footer.html';
+    include './includes/footer.php';
     ?>
 
     <!-- Js Plugins -->
