@@ -58,7 +58,6 @@
                         </div>
                         <div class="banner__item__text">
                             <h2>Anime Collections 2023</h2>
-                            <a href="shop.php">Shop now</a>
                         </div>
                     </div>
                 </div>
@@ -69,7 +68,6 @@
                         </div>
                         <div class="banner__item__text">
                             <h2>Gamer Collections 2023</h2>
-                            <a href="shop.php">Shop now</a>
                         </div>
                     </div>
                 </div>
@@ -97,7 +95,7 @@
                 </div>
             </div>      
             <div class="row product__filter">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix"><?php echo $row['category_name']; ?>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix <?php echo $row['category_name']; ?>">
                
             <?php
                         $sql= "SELECT * FROM products";
@@ -107,7 +105,6 @@
             ?>
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="img/product/<?php echo $row['image']; ?>">
-                            <span class="label">New</span>
                         </div>
                         <div class="product__item__text">
                             <h6><?php echo $row['name']; ?></h6>

@@ -20,7 +20,7 @@
                         $sql= "SELECT * FROM products";
                         $result= mysqli_query($connect , $sql);
                         if(mysqli_num_rows($result)){
-                            while($row = mysqli_fetch_assoc($result)){
+                            $row = mysqli_fetch_assoc($result)
             ?>
     
         <div class="product__details__pic">
@@ -110,14 +110,11 @@
                     </div>
                 </div>
             </div>
-            
         </div>
                     <?php
                             }
-                        }
                     ?>      
-    </section>
-                    
+    </section>    
     <!-- Shop Details Section End -->
 
     <!-- Footer -->
