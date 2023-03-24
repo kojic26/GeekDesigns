@@ -13,14 +13,16 @@
         }
       }
 ?>
+            
+    <!-- Shop Details Section Begin -->
+    <section class="shop-details">
             <?php
                         $sql= "SELECT * FROM products";
                         $result= mysqli_query($connect , $sql);
                         if(mysqli_num_rows($result)){
                             while($row = mysqli_fetch_assoc($result)){
             ?>
-    <!-- Shop Details Section Begin -->
-    <section class="shop-details">
+    
         <div class="product__details__pic">
             <div class="container">
                 <div class="row">
@@ -33,6 +35,8 @@
                     </div>
                 </div>
                 <div class="row">
+
+                
 
                     <div class="col-lg-3 col-md-3">
                         <ul class="nav nav-tabs" role="tablist">
@@ -106,12 +110,14 @@
                     </div>
                 </div>
             </div>
+            
         </div>
-    </section>
                     <?php
                             }
                         }
-                    ?>  
+                    ?>      
+    </section>
+                    
     <!-- Shop Details Section End -->
 
     <!-- Footer -->
