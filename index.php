@@ -119,6 +119,7 @@
                         ?>           
                     </div>
                 </div>
+                <div class="clearfix visible-md visible-sm"></div>
             </div>
         </div>
             
