@@ -1,8 +1,24 @@
 <?php
     include './includes/header.php';
     require './database/database.php';
-?>
 
+    if (isset($_GET['product_id'])) {
+        $id = $_GET['product_id'];
+        $sql = "select * from products where product_id=".$id;
+        $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+          $row = mysqli_fetch_assoc($result);
+        }else {
+          $errorMsg = 'Could not Find Any Record';
+        }
+      }
+?>
+            <?php
+                        $sql= "SELECT * FROM products";
+                        $result= mysqli_query($connect , $sql);
+                        if(mysqli_num_rows($result)){
+                            while($row = mysqli_fetch_assoc($result)){
+            ?>
     <!-- Shop Details Section Begin -->
     <section class="shop-details">
         <div class="product__details__pic">
@@ -17,13 +33,6 @@
                     </div>
                 </div>
                 <div class="row">
-
-                    <?php
-                        $id = $_GET['product_id'];
-                        $sql= "SELECT * FROM products WHERE id=$id";
-                        $result= mysqli_query($connect , $sql);
-                        $row = $result->fetch_assoc()
-                    ?>
 
                     <div class="col-lg-3 col-md-3">
                         <ul class="nav nav-tabs" role="tablist">
@@ -70,6 +79,7 @@
             </div>
         </div>
         <div class="product__details__content">
+        
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
@@ -98,6 +108,10 @@
             </div>
         </div>
     </section>
+                    <?php
+                            }
+                        }
+                    ?>  
     <!-- Shop Details Section End -->
 
     <!-- Footer -->
