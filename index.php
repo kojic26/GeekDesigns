@@ -79,6 +79,12 @@
     <!-- Banner Section End -->
 
     <!-- Product Section Begin -->
+            <?php
+                        $sql= "SELECT * FROM categories";
+                        $result= mysqli_query($connect , $sql);
+                        if(mysqli_num_rows($result)){
+                            while($row = mysqli_fetch_assoc($result)){
+            ?>
     <section class="product spad">
         <div class="container">
             <div class="row">
@@ -89,16 +95,16 @@
                         <li data-filter=".hot-sales">Gaming Designs</li>
                     </ul>
                 </div>
-            </div>
+            </div>      
             <div class="row product__filter">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix <?php echo $row['category_name']; ?>">
-
-                    <?php
+                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix"><?php echo $row['category_name']; ?>
+               
+            <?php
                         $sql= "SELECT * FROM products";
                         $result= mysqli_query($connect , $sql);
-                        while($row = $result->fetch_assoc()){
-                    ?>
-
+                        if(mysqli_num_rows($result)){
+                            while($row = mysqli_fetch_assoc($result)){
+            ?>
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="img/product/<?php echo $row['image']; ?>">
                             <span class="label">New</span>
@@ -107,14 +113,18 @@
                             <h6><?php echo $row['name']; ?></h6>
                             <a href="product-detail.php?id=<?php echo $row['product_id']; ?>" class="buy-now">Buy Now</a>
                             <h5><?php echo $row['price']; ?></h5>                           
-                        </div>                          
+                        </div>  
+                        <?php
+                                    }
+                                }
+                            }
+                        }
+                        ?>           
                     </div>
-                    
-                    <?php } ?> 
-
                 </div>
             </div>
         </div>
+            
     </section>
     <!-- Product Section End -->
 
