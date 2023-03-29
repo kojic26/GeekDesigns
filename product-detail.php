@@ -17,7 +17,9 @@
     <!-- Shop Details Section Begin -->
     <section class="shop-details">
             <?php
-                        $sql= "SELECT * FROM products";
+                if (isset($_GET['id']))
+                    $id = $_GET['id'];
+                        $sql= "SELECT * FROM products WHERE product_id=$id";
                         $result= mysqli_query($connect , $sql);
                         if(mysqli_num_rows($result)){
                             $row = mysqli_fetch_assoc($result)
