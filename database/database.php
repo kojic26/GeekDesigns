@@ -1,5 +1,5 @@
 <?php
-$servername = "altheaintl.com";
+$servername = "localhost";
 $username = "kojic26_jpynzon";
 $password = "rememberme123";
 $dbname = "kojic26_onlineshop";
